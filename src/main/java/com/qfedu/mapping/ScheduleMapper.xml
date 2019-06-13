@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+	<mapper		namespace="com.qfedu.dao.ScheduleDao">
+	<resultMap id="scheduledao" type="schedule">
+	<id column="id" property="id"></id>
+		<result column="type" property="type"></result>
+		<result column="createdate" property="createDate"></result>
+		<result column="flag" property="flag"></result>
+		<result column="sno" property="sno"></result>
+		<result column="enddate" property="endDate"></result>
+		<result column="gno" property="gno"></result>
+	</resultMap>
+	
+</mapper>

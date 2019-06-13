@@ -3,7 +3,7 @@ package com.qfedu.pojo;
 /**
  * Created by Administrator on 2019/6/13.
  */
-public class Count {
+public class County {
     private Integer id;
     private String no;//4位市区编号+
     private String name;//县区名称
@@ -52,7 +52,7 @@ public class Count {
 
     @Override
     public String toString() {
-        return "Count{" +
+        return "County{" +
                 "id=" + id +
                 ", no='" + no + '\'' +
                 ", name='" + name + '\'' +

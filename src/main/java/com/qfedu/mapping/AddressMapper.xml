@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+	<mapper		namespace="com.qfedu.dao.AddressDao">
+	<resultMap id="addressdao" type="address">
+	<id column="id" property="id"></id>
+		<result column="type" property="type"></result>
+		<result column="province" property="province"></result>
+		<result column="flag" property="flag"></result>
+		<result column="city" property="city"></result>
+		<result column="country" property="country"></result>
+		<result column="no" property="no"></result>
+		<result column="detail" property="detail"></result>
+		<result column="postcode" property="postCode"></result>
+	</resultMap>
+	
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+	<mapper		namespace="com.qfedu.dao.WorkDao">
+	<resultMap id="workdao" type="work">
+	<id column="id" property="id"></id>
+		<result column="type" property="type"></result>
+		<result column="createtime" property="createTime"></result>
+		<result column="flag" property="flag"></result>
+		<result column="sno" property="sno"></result>
+		<result column="location" property="location"></result>
+		<result column="no" property="no"></result>
+	</resultMap>
+	
+</mapper>
