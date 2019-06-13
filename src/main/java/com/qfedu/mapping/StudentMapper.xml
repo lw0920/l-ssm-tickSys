@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+	<mapper		namespace="com.qfedu.dao.StudentDao">
+	<resultMap id="studentdao" type="student">
+	<id column="no" property="no"></id>
+		<result column="name" property="name"></result>
+		<result column="createdate" property="createDate"></result>
+		<result column="flag" property="flag"></result>
+		<result column="qq" property="qq"></result>
+		<result column="gid" property="gid"></result>
+		<result column="introno" property="introNo"></result>
+		<result column="email" property="email"></result>
+		<result column="phone" property="phone"></result>
+		<result column="education" property="education"></result>
+		<result column="school" property="school"></result>
+		<result column="cardno" property="cardNo"></result>
+		<result column="birthday" property="birthday"></result>
+		<result column="sex" property="sex"></result>
+		<result column="photo" property="photo"></result>
+	</resultMap>
+	
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+	<mapper		namespace="com.qfedu.dao.LoginLogDao">
+	<resultMap id="loginlogdao" type="loginlog">
+	<id column="id" property="id"></id>
+		<result column="ip" property="ip"></result>
+		<result column="createtime" property="createTime"></result>
+		<result column="location" property="location"></result>
+		<result column="no" property="no"></result>
+	</resultMap>
+	
+</mapper>

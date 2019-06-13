@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by Administrator on 2019/6/13.
  */
 public class Grade {
-    private String no;
+    private String id;
     private String name;//校区简拼-学科名称-班号
     private Date createDate;
     private Integer flag;//1有效 2无效
@@ -14,12 +14,12 @@ public class Grade {
     private String location;
     private Integer cid;
 
-    public String getNo() {
-        return no;
+    public String getid() {
+        return id;
     }
 
-    public void setNo(String no) {
-        this.no = no;
+    public void setid(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -73,7 +73,7 @@ public class Grade {
     @Override
     public String toString() {
         return "Grade{" +
-                "no='" + no + '\'' +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", createDate=" + createDate +
                 ", flag=" + flag +
