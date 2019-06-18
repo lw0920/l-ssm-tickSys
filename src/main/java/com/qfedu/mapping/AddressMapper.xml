@@ -15,5 +15,5 @@
 		<result column="detail" property="detail"></result>
 		<result column="postcode" property="postCode"></result>
 	</resultMap>
-	
+
 </mapper>

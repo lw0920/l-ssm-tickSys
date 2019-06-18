@@ -52,7 +52,7 @@ public class County {
 
     @Override
     public String toString() {
-        return "County{" +
+        return "CountyService{" +
                 "id=" + id +
                 ", no='" + no + '\'' +
                 ", name='" + name + '\'' +

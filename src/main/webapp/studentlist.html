@@ -28,7 +28,7 @@
 		  //第一个实例
 		  table.render({
 		    elem: '#tbdata'
-		    ,url: 'studentpage.do' //数据接口
+		    ,url: 'student/studentpage.do' //数据接口
 		    ,page: true //开启分页
 		    ,cols: [[ //表头
 		      {field: 'no', title: '学号', sort: true, fixed: 'left'}
@@ -40,7 +40,7 @@
 		      ,{field: 'school', title: '毕业学校'}
 		      ,{field: 'education', title: '学历'}
 		      ,{field: 'birthday', title: '出生日期'}
-		      ,{field: 'createdate', title: '入学日期'}
+		      ,{field: 'createDate', title: '入学日期'}
 		      ,{field:'right', title: '操作',toolbar:"#barop"}
 		    ]]
 		  });
@@ -65,7 +65,7 @@
 		                });
 		            });
 		        } else if(obj.event === 'detail'){//编辑 修改
-		          // location.href="staffupdate.html?d="+ encodeURI(JSON.stringify(data));
+		          //location.href="staffupdate.html?d="+ encodeURI(JSON.stringify(data));
 		           	layer.msg(JSON.stringify(data));
 		        }
 		});

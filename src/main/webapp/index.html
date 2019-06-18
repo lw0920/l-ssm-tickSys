@@ -9,6 +9,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css"> -->
     <link rel="stylesheet" href="media/css/app.css" media="all">
     <link rel="stylesheet" href="media/css/font-awesome.min.css">
+
     <style type="text/css">
         iframe{
             width: 98%;
@@ -105,11 +106,14 @@
             for(i=0;i<arr.length;i++){
                 var parent=arr[i];
                 s+="<li class='layui-nav-item '> <a href='javascript:;' id='"+parent.id+"'><i class=\"fa "+parent.icon+"\"></i>&nbsp;"+parent.title+"</a>";
-                if(parent.childs.length>0){
+                var cmuna = parent.list;
+                if(cmuna.length>0){
                     s+="<dl class='layui-nav-child'>";
-                    for(j=0;j<parent.childs.length;j++){
-                        var child=parent.childs[j];
-                        s+="<dd><a href='javascript:;' id='"+child.id+"' onclick='showTab("+child.id+",\""+child.aurl+"\",\""+child.title+"\")'>&nbsp;&nbsp;&nbsp;&nbsp;"+child.title+"</a></dd>";
+                    for(j=0;j<cmuna.length;j++){
+                        /*cmuna[j].aurl*/
+                        s+=" <shiro:hasPermission name='url'>";
+                        s+=" <dd><a href='javascript:;' id='"+cmuna[j].id+"' onclick='showTab("+cmuna[j].id+",\""+cmuna[j].aurl+"\",\""+cmuna[j].title+"\")'>&nbsp;&nbsp;&nbsp;&nbsp;"+cmuna[j].title+"</a></dd>";
+                        s+="</shiro:hasPermission>";
                     }
                     s+="</dl>";
                 }

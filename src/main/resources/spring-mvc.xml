@@ -19,6 +19,7 @@
      <!-- 使用注解，所以需要进行注解扫描
      	springmvc的配置，只扫描控制器的注解
       -->
+
 	<context:component-scan base-package="com.qfedu.controller">
 	</context:component-scan>
     
@@ -43,6 +44,16 @@
     
     <!-- 将静态资源 交给tomcat默认的servlet进行处理 -->
     <mvc:default-servlet-handler/>
+
+    <!-- 静态资源解析 包括 ：js、css、img、.. -->
+    <mvc:resources location="media/js/" mapping="/js/**" />
+    <mvc:resources location="media/images/" mapping="/img/**" />
+    <mvc:resources location="media/css/" mapping="/css/**" />
+    <mvc:resources location="media/fonts/" mapping="/fonts/**" />
+    <mvc:resources location="media/layui/css" mapping="/layui/css/**" />
+    <mvc:resources location="media/layui/font" mapping="/layui/css/**" />
+    <mvc:resources location="media/layui/lay" mapping="/layui/lay/**" />
+    <mvc:resources location="media/tem/" mapping="/tem/**" />
     
     
     <!-- 1 如果针对控制器中的方法的形参，可以直接使用相关验证的注解，需要增加该配置 -->
@@ -68,4 +79,31 @@
         <!-- 启用是为了推迟文件解析，以便捕获文件大小异常 -->
         <property name="resolveLazily" value="true"/>
     </bean>
+
+
+    <!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!-- 生成代理，通过代理进行控制 -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>
+    <!-- 开启Shiro注解,必须放在springmvc的配置文件中 -->
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+    <!-- 注解方式下的异常处理，身份认证异常处理、权限认证异常处理 -->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <!--登录异常，跳转到login.jsp-->
+                <prop key="org.apache.shiro.authz.UnauthenticatedException">
+                    /login
+                </prop>
+                <!-- 授权异常，跳转到unauthorized.jsp -->
+                <prop key="org.apache.shiro.authz.UnauthorizedException">unauthorized</prop>
+            </props>
+        </property>
+    </bean>
+
+
 </beans>

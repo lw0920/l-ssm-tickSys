@@ -21,6 +21,9 @@ public class Student {
     private Integer flag;//1在读2休学3毕业4开除5退学
     private String createDate;//入学日期
     private String photo;//照片路径
+    private Grade grade;
+    private String gname;
+
 
     public String getNo() {
         return no;
@@ -142,6 +145,17 @@ public class Student {
         this.photo = photo;
     }
 
+    public Grade getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Grade grade) {
+        this.grade = grade;
+    }
+    public String getGname() {
+        return grade.getName();
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -160,6 +174,7 @@ public class Student {
                 ", flag=" + flag +
                 ", createDate='" + createDate + '\'' +
                 ", photo='" + photo + '\'' +
+                ", grade=" + grade +
                 '}';
     }
 }

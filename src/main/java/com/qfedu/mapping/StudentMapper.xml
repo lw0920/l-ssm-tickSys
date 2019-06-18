@@ -20,6 +20,11 @@
 		<result column="birthday" property="birthday"></result>
 		<result column="sex" property="sex"></result>
 		<result column="photo" property="photo"></result>
+		<association property="grade" resultMap="com.qfedu.dao.GradeDao.gradedao"></association>
 	</resultMap>
-	
+	<select id="findAll" resultMap="studentdao">
+		select s.*,g.name as gname from t_student s
+		INNER JOIN t_grade g
+		on s.gid=g.id
+	</select>
 </mapper>

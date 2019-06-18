@@ -6,9 +6,9 @@
 	<mapper		namespace="com.qfedu.dao.GradeDao">
 	<resultMap id="gradedao" type="grade">
 	<id column="id" property="id"></id>
-		<result column="name" property="name"></result>
+		<result column="gname" property="name"></result>
 		<result column="createdate" property="createDate"></result>
-		<result column="flag" property="flag"></result>
+		<result column	="flag" property="flag"></result>
 		<result column="week" property="week"></result>
 		<result column="location" property="location"></result>
 		<result column="cid" property="cid"></result>
