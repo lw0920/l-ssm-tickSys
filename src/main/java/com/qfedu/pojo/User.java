@@ -9,6 +9,15 @@ public class User {
     private String password;
     private Integer flag;//1代表有效2代表无效
     private Integer role;//1学员2员工3管理员
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;
@@ -58,6 +67,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", flag=" + flag +
                 ", role=" + role +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

@@ -12,5 +12,31 @@
 		<result column="name" property="name"></result>
 		<result column="no" property="no"></result>
 	</resultMap>
-	
+	<!--通过登录名找到人-->
+	<select id="findByName" resultMap="userdao" parameterType="string">
+		select * from t_user where no =#{name}
+	</select>
+
+	<!--通过登录名找到登录人的角色以及权限-->
+	<select id="findRolesByName" parameterType="string" resultType="string">
+		SELECT r.info from t_user u
+		INNER JOIN t_userrole ur
+		on u.id=ur.uid
+		INNER JOIN t_role r
+		on ur.rid = r.id
+		where u.no=#{name}
+	</select>
+	<select id="findPermsByName" parameterType="string" resultType="string">
+		SELECT distinct a.aurl from t_user u
+		INNER JOIN t_userrole ur
+		on u.id=ur.uid
+		INNER JOIN t_role r
+		on ur.rid = r.id
+		INNER JOIN t_roleauthority ru
+		on r.id=ru.rid
+		INNER JOIN t_authority a
+		on ru.aid=a.id
+		where u.no=#{name}
+	</select>
+
 </mapper>

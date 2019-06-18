@@ -54,7 +54,7 @@ public class Log {
 
     @Override
     public String toString() {
-        return "Log{" +
+        return "LogController{" +
                 "id=" + id +
                 ", type=" + type +
                 ", content='" + content + '\'' +

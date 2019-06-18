@@ -4,12 +4,19 @@
 
 
 	<mapper		namespace="com.qfedu.dao.LoginLogDao">
-	<resultMap id="loginlogdao" type="loginlog">
+	<resultMap id="loginLogdao" type="loginLog">
 	<id column="id" property="id"></id>
 		<result column="ip" property="ip"></result>
 		<result column="createtime" property="createTime"></result>
 		<result column="location" property="location"></result>
 		<result column="no" property="no"></result>
 	</resultMap>
-	
+
+	<insert id="insertIntoLoginLog" parameterType="com.qfedu.pojo.LoginLog">
+		insert into t_loginlog (ip,location,no) values(#{ip},#{location},#{no})
+	</insert>
+
+	<select id="findAllLoginLog" parameterType="string" resultMap="loginLogdao">
+		SELECT * from t_loginlog where no=#{no} order by id DESC
+	</select>
 </mapper>
