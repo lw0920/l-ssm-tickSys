@@ -6,6 +6,7 @@ import com.qfedu.service.UserService;
 import com.qfedu.utils.GetIpAddressByIp;
 import com.qfedu.utils.GetIpUtils;
 import com.qfedu.utils.MD5Utils;
+import com.qfedu.vo.JsonBean;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -38,6 +39,7 @@ public class UserController {
             subject.login(token);
 
             String ip = GetIpUtils.getIpAddress(request);
+            System.out.println(request);
             String address = GetIpAddressByIp.getIpAddressByIp(ip);
             System.out.println(ip+address+".......................");
             LoginLog loginLog = new LoginLog();
@@ -70,6 +72,31 @@ public class UserController {
     public Map<String, Object> loginLogList(Integer page,Integer limit){
         String name=(String)SecurityUtils.getSubject().getPrincipal();
         Map map = userService.findAllLoginLogByPage(name, page, limit);
+
+        return map;
+    }
+
+    //所有登陆人员
+    @RequestMapping("/userall.do")
+    @ResponseBody
+    public Map<String, Object> loginLogList(Integer page, Integer limit, String no, Integer flag){
+        Map map = userService.findAllUser(page, limit, no, flag);
+
+        return map;
+    }
+
+    @RequestMapping("/userdel.do")
+    @ResponseBody
+    public JsonBean delUser(Integer id){
+        userService.delUser(id);
+
+        return new JsonBean(1000,null);
+    }
+
+    @RequestMapping("/rolepage.do")
+    @ResponseBody
+    public Map roleFindByPage(Integer page, Integer limit, String no,Integer flag){
+        Map map= userService.findAllRoleByPage(page,limit,no,flag);
 
         return map;
     }

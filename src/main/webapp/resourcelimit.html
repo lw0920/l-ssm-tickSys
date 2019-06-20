@@ -110,10 +110,10 @@
         });
     }
     function changePid(i) {
-		if(i==-1){
+		if(i ==-1){
             $.get("authorityroot.do",null,function (arr) {
-				for(i=0;i<arr.length;i++){
-                    $("#spid").append("<option value=\""+arr[i].id+"\">"+arr[i].title+"</option>");
+				for(var j=0;j<arr.length;j++){
+                    $("#spid").append("<option value=\""+arr[j].id+"\">"+arr[j].title+"</option>");
 				}
             $("#dvl1").css("display","block");
             form.render();
@@ -128,7 +128,7 @@
     }
 </script>
 </body>
-<div style="display: none;margin-top: 10px;width: 480px" id="dvlay">
+<div style="display: none;margin-top: 20px;width: 480px" id="dvlay">
 	<form id="fm1" class="layui-form " >
 		<div class="layui-form-item"  >
 			<label class="layui-form-label">名称：</label>
@@ -152,14 +152,14 @@
 			<label class="layui-form-label">级别：</label>
 			<div class="layui-input-inline">
 				<input type="radio" name="pid" value="0" lay-filter="level"  title="一级" checked>
-				<input type="radio" name="pid" value="-1" lay-filter="level"   title="二级" >
+				<input type="radio" name="pid" value="-1" lay-filter="level"   title="二级">
 			</div>
 		</div>
 		<input type="hidden" name="parentId" id="pid">
-		<div class="layui-form-item" id="dvl1" style="display: none" >
+		<div class="layui-form-item" id="dvl1" style="display: none">
 			<label class="layui-form-label">上级路径：</label>
 			<div class="layui-input-inline">
-				<select onselect="setPid(this)" id="spid" >
+				<select onselect="setPid(this)" id="spid" name="parentId">
 
 				</select>
 

@@ -8,11 +8,12 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="media/layui/css/layui.css" media="all">
+	<script type="text/javascript" src="media/js/jquery.min.js"></script>
 </head>
 <body>
 
 	<div class="layui-container" style="margin-top: 5px">
-		<form class="layui-form" action="departadd.do" method="post">
+		<form class="layui-form" action="departadd.do" onsubmit="return false" method="post">
 			<div class="layui-form-item">
 				<label class="layui-form-label">部门名称</label>
 				<div class="layui-input-block">
@@ -62,6 +63,21 @@
 								}
 							});
 		});
+
+
+		$("form").submit(function () {
+			$.ajax({
+				type:"post",
+				url:"departadd.do",
+				data:$("form").serialize(),
+				dataType:"json",
+				success:function(data){
+					if(data.code==1000){
+						window.location.href="departlist.html"
+					}
+				}
+			})
+		})
 	</script>
 </body>
 </html>

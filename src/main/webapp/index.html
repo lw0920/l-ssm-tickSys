@@ -49,7 +49,7 @@
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item" style="margin-right: 20px">
-                <a href="javascript:showTab(1001,'processlist.html','待办事项');">待办事项<span class="layui-badge">99+</span></a>
+                <a href="javascript:showTab(1,'processlist.html','待办事项');">待办事项<span class="layui-badge">99+</span></a>
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">
@@ -57,9 +57,9 @@
                     Feri
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="javascript:showTab(1001,'user.html','我的信息');">我的信息</a></dd>
-                    <dd><a href="javascript:showTab(1001,'user.html','更改头像');">更改头像</a></dd>
-                    <dd><a href="javascript:showTab(1002,'user.html','修改密码');">修改密码</a></dd>
+                    <dd><a href="javascript:showTab(1,'user.html','我的信息');">我的信息</a></dd>
+                    <dd><a href="javascript:showTab(1,'user.html','更改头像');">更改头像</a></dd>
+                    <dd><a href="javascript:showTab(1,'user.html','修改密码');">修改密码</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item"><a href="userloginout.do">注销</a></li>
@@ -105,7 +105,7 @@
             var s;
             for(i=0;i<arr.length;i++){
                 var parent=arr[i];
-                s+="<li class='layui-nav-item '> <a href='javascript:;' id='"+parent.id+"'><i class=\"fa "+parent.icon+"\"></i>&nbsp;"+parent.title+"</a>";
+                s+="<li class='layui-nav-item '> <a href='javascript:;' id='"+parent.id+"'><i class=\"fa "+parent.aicon+"\"></i>&nbsp;"+parent.title+"</a>";
                 var cmuna = parent.list;
                 if(cmuna.length>0){
                     s+="<dl class='layui-nav-child'>";
@@ -138,6 +138,7 @@
         element.render();
         tid=id;
     }
+
 
 </script>
 </body>

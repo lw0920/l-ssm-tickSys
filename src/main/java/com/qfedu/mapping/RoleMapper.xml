@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper		namespace="com.qfedu.dao.RoleDao">
+
+		<resultMap id="roleAuthority" type="role">
+			<id column="id" property="id"></id>
+			<result column="info" property="info"></result>
+			<result column="name" property="name"></result>
+			<result column="parentId" property="parentId"></result>
+			<collection property="list" ofType="authority" javaType="list">
+				<id column="aid" property="id"></id>
+				<result column="aicon" property="aicon"></result>
+				<result column="aurl" property="aurl"></result>
+				<result column="parentId" property="parentId"></result>
+				<result column="title" property="title"></result>
+				<result column="type" property="type"></result>
+			</collection>
+
+		</resultMap>
+
+	<select id="findallrole" resultType="role">
+		select * from t_role
+	</select>
+
+	<select id="findAllRoleCount" resultType="Integer">
+		select count(1) from t_role
+	</select>
+
+	<select id="findAllRoleByPage" resultMap="roleAuthority">
+		SELECT DISTINCT r.id,r.name,r.info,a.id as aid,a.aurl,a.title from t_role r
+		INNER JOIN t_roleauthority ra
+		on r.id=ra.rid
+		INNER JOIN t_authority a
+		on ra.aid=a.id
+		where r.id IN
+		(
+		select res.id from (
+		SELECT DISTINCT r.id from t_role r
+		INNER JOIN t_roleauthority ra
+		on r.id=ra.rid
+		INNER JOIN t_authority a
+		on ra.aid=a.id
+		limit #{page},#{limit}
+		) res
+		)
+	</select>
+</mapper>
