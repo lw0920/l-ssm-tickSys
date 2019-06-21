@@ -20,6 +20,7 @@ import java.util.Map;
 /**
  * Created by Administrator on 2019/6/14.
  */
+@Service
 public class DepartServiceImpl implements DepartService {
     @Autowired(required = false)
     private DepartDao departDao;
@@ -34,7 +35,7 @@ public class DepartServiceImpl implements DepartService {
 
         PageHelper.startPage(page,limit);
         List<Depart> list = departDao.findAllDepart();
-        System.out.println(list.get(0).getSum());
+       // System.out.println(list.get(0).getSum());
         long total = ((Page)list).getTotal();
         Map map = new HashMap();
         map.put("code",0);
@@ -62,5 +63,10 @@ public class DepartServiceImpl implements DepartService {
     @Override
     public void addDepart(Depart depart) {
         departDao.addDepart(depart);
+    }
+
+    @Override
+    public List findAllDepart() {
+        return departDao.findAllDepart();
     }
 }
