@@ -9,4 +9,12 @@ import java.util.List;
  */
 public interface DepartDao {
     public List<Depart> find();
+
+    List<Depart> findAllDepart();
+
+    void updateDepart(Depart depart);
+
+    void deleteDepart(Integer id);
+
+    void addDepart(Depart depart);
 }

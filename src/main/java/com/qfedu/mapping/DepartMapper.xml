@@ -6,7 +6,7 @@
 	<mapper	 namespace="com.qfedu.dao.DepartDao">
 	<resultMap id="departdao" type="depart">
 	<id column="id" property="id"></id>
-		<result column="dname" property="name"></result>
+		<result column="name" property="name"></result>
 		<result column="createtime" property="createTime"></result>
 		<result column="flag" property="flag"></result>
 	</resultMap>
@@ -19,7 +19,7 @@
 		<result column="su" property="sum"></result>
 	</resultMap>
 
-	
+
 	<select id="findAllDepart" resultMap="departdaovo">
 		SELECT id,name,createtime,(
 		select count(*) from t_staff s

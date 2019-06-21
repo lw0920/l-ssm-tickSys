@@ -1,6 +1,7 @@
 package com.qfedu.dao;
 
 import com.qfedu.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,4 +16,14 @@ public interface UserDao {
     List<String> findPermsByName(String name);
 
     User findByName(String name);
+
+    List<User> findAllUser(@Param("page")Integer page,@Param("limit") Integer limit, @Param("no") String no, @Param("flag") Integer flag);
+
+    Integer findAllUserCount();
+
+    void deleteById(Integer id);
+
+
+
+
 }

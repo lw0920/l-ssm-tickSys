@@ -26,8 +26,8 @@
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">用户：</label>
                 <div class="layui-input-block">
-                    <select class="layui-input" id="fg">
-                        <option value="1">有效</option>
+                    <select class="layui-input" id="fg" value="1">
+                        <option value="1" selected="selected">有效</option>
                         <option value="2">无效</option>
                     </select>
                 </div>
@@ -54,8 +54,15 @@
     </div>
 </div>
 
+
+
+
+
 </div>
 <script src="media/layui/layui.js"></script>
+
+
+
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
     var tableIns;
@@ -72,7 +79,18 @@
                 {field: 'id', title: '序号', sort: true, fixed: 'left'}
                 , {field: 'no', title: '工号'}
                 , {field: 'name', title: '姓名', sort: true}
-                , {field: 'role', title: '职位', sort: true}
+                , {field: 'role', title: '职位', sort: true,
+                    templet:function (data) {
+                        var infos = "";
+                        if(data.ro.length>0){
+                            for(var i =0 ; i<data.ro.length;i++){
+                                infos+=" "+data.ro[i].info;
+                            }
+                        }
+                        return infos;
+                    }
+
+                }
                 , {
                     field: 'flag', title: '有/无效', templet: function (obj) {
                         var r;
@@ -91,6 +109,8 @@
                 , {field: 'right', title: '操作', toolbar: "#barop"}
             ]]
         });
+
+
         //监听工具条
         table.on('tool(tbop)', function (obj) {
             var data = obj.data;
@@ -144,11 +164,15 @@
     }
 
     function loadRoles(user) {
+        var rids=[];
+        for(var i =0 ; i<user.ro.length;i++){
+            rids[i] = user.ro[i].id;
+        }
         $("#uid").val(user.id);
         $.get("roleall.do", null, function (arr) {
             $("#dv1").html("");
             for (i = 0; i < arr.length; i++) {
-                if(user.rids.indexOf(arr[i].id)>-1){
+                if(rids.indexOf(arr[i].id)>-1){
                     $("#dv1").append("<input type=\"checkbox\" name=\"rids\" value='" + arr[i].id + "' title=\"" + arr[i].info + "\" checked>");
                 }else{
                     $("#dv1").append("<input type=\"checkbox\" name=\"rids\" value='" + arr[i].id + "' title=\"" + arr[i].info + "\">");

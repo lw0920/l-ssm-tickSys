@@ -31,14 +31,14 @@ function getData() {
 function showData(obj) {
 	$("#f1").val(obj.id);
 	$("#f2").val(obj.name);
-	$("#f3").val(obj.createtime);
+	$("#f3").val(obj.createTime);
 }
 </script>
 </head>
 <body>
 
 	<div class="layui-container" style="margin-top: 5px">
-		<form class="layui-form" action="departupdate.do" method="post">
+		<form class="layui-form" action="departupdate.do" onsubmit="return false" method="post">
 		<div class="layui-form-item">
 				<label class="layui-form-label">部门序号</label>
 				<div class="layui-input-block">
@@ -56,7 +56,7 @@ function showData(obj) {
 			<div class="layui-form-item">
 				<label class="layui-form-label">成立日期</label>
 				<div class="layui-input-block">
-				 <input type="text" name="createtime" readonly="readonly" id="f3" autocomplete="off" class="layui-input">
+				 <input type="text" name="createTime" readonly="readonly" id="f3" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			
@@ -71,8 +71,25 @@ function showData(obj) {
 		layui.use([ 'form', 'laydate' ],
 						function() {
 							var form = layui.form, layer = layui.layer, laydate = layui.laydate;
+							var upload = layui.upload;
+
+
 
 		});
+		$("form").submit(function () {
+			$.ajax({
+				type:"post",
+				url:"departupdate.do",
+				data:$("form").serialize(),
+				dataType:"json",
+				success:function(data){
+					if(data.code==1000){
+						window.location.href="departlist.html"
+					}
+				}
+
+			})
+		})
 	</script>
 </body>
 </html>

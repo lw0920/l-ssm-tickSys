@@ -6,14 +6,14 @@
 	<mapper namespace="com.qfedu.dao.AuthorityDao">
 	<resultMap id="authorityDao" type="authority">
 		<id column="id" property="id"></id>
-		<result column="acion" property="acion"></result>
+		<result column="aicon" property="aicon"></result>
 		<result column="aurl" property="aurl"></result>
 		<result column="parentId" property="parentId"></result>
 		<result column="title" property="title"></result>
 		<result column="type" property="type"></result>
-		<collection property="list" ofType="com.qfedu.pojo.Authority">
+		<collection property="list" ofType="com.qfedu.pojo.Authority" javaType="list">
 			<id column="cid" property="id"></id>
-			<result column="cacion" property="acion"></result>
+			<result column="caicon" property="aicon"></result>
 			<result column="caurl" property="aurl"></result>
 			<result column="cparentId" property="parentId"></result>
 			<result column="ctitle" property="title"></result>
@@ -36,5 +36,36 @@
 			on ru.aid=a.id
 			where u.no=#{no})
 	</select>
-	
+
+	<delete id="deleteRoleById" parameterType="Integer">
+		delete from t_userrole where uid=#{id}
+	</delete>
+	<insert id="inserRoleById" >
+		insert into t_userrole(uid,rid) VALUES
+		<foreach collection="rids" item="rid" index="index" separator=",">
+			(#{id},#{rid})
+		</foreach>
+	</insert>
+
+
+	<select id="findAllAuthority" resultType="authority">
+		select * from t_authority
+	</select>
+
+	<select id="findFirstAuthority" resultType="authority">
+		select * from t_authority where parentId = 0
+	</select>
+
+	<insert id="insertAuthority" parameterType="authority">
+		insert into t_authority(aurl,parentId,title,type) values(#{aurl},#{parentId},#{title},1)
+	</insert>
+
+	<delete id="deleteRoleAuthorityByAuthorityId" parameterType="Integer" >
+		DELETE from t_roleauthority where aid=#{id}
+	</delete>
+
+	<delete id="deleteById" parameterType="Integer">
+		DELETE from t_authority where id=#{id}
+	</delete>
+
 </mapper>

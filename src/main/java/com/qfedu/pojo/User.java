@@ -1,5 +1,7 @@
 package com.qfedu.pojo;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2019/6/13.
  */
@@ -7,10 +9,27 @@ public class User {
     private Integer id;
     private String no;
     private String password;
+    private Integer role;
     private Integer flag;//1代表有效2代表无效
-    private Integer role;//1学员2员工3管理员
     private String name;
+    private List<Role> ro;
 
+
+    public List<Role> getRo() {
+        return ro;
+    }
+
+    public void setRo(List<Role> ro) {
+        this.ro = ro;
+    }
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
+    }
     public String getName() {
         return name;
     }
@@ -49,14 +68,6 @@ public class User {
 
     public void setFlag(Integer flag) {
         this.flag = flag;
-    }
-
-    public Integer getRole() {
-        return role;
-    }
-
-    public void setRole(Integer role) {
-        this.role = role;
     }
 
     @Override

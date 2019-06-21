@@ -9,4 +9,13 @@ import java.util.List;
  */
 public interface DepartService {
     public List<Depart> find();
+
+
+    Map findAlldepart(Integer page, Integer limit);
+
+    void updateDepart(Depart depart);
+
+    void deleteDepart(Integer id);
+
+    void addDepart(Depart depart);
 }

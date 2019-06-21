@@ -17,4 +17,10 @@ public interface UserService {
 
     Map findAllLoginLogByPage(String no, Integer page, Integer limit);
 
+    Map findAllUser(Integer page, Integer limit, String no, Integer flag);
+
+    void delUser(Integer id);
+
+    Map findAllRoleByPage(Integer page, Integer limit, String no, Integer flag);
+
 }
