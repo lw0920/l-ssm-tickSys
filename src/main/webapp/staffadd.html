@@ -63,7 +63,7 @@
 	  		<div class="layui-form-item">
 	             <label class="layui-form-label">入职日期</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="createdate" id="date" autocomplete="off" class="layui-input">
+                    <input type="text" name="createDate" id="date" autocomplete="off" class="layui-input">
                 </div>
 	        </div>
  			<div class="layui-form-item">
@@ -97,7 +97,7 @@
 							  //执行实例
 							  var uploadInst = upload.render({
 							    elem: '#upfile' //绑定元素
-							    ,url: 'photoupload.do' //上传接口
+							    ,url: '/photoupload.do' //上传接口
 							    ,done: function(obj){
 							      //上传完毕回调
 							      console.log(obj);
@@ -151,6 +151,20 @@
 				
 			})
 		}
+	$("form").submit(function () {
+		$.ajax({
+			type:"post",
+			url:"staffadd.do",
+			data:$("form").serialize(),
+			dataType:"json",
+			success:function(data){
+				if(data.code==1000){
+					window.location.href="stafflist.html"
+				}
+			}
+
+		})
+	})
 	</script>
 </body>
 </html>

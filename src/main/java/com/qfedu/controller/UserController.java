@@ -70,7 +70,6 @@ public class UserController {
     public Map<String, Object> loginLogList(Integer page,Integer limit){
         String name=(String)SecurityUtils.getSubject().getPrincipal();
         Map map = userService.findAllLoginLogByPage(name, page, limit);
-
         return map;
     }
 

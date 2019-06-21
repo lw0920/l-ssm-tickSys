@@ -27,4 +27,12 @@
 		INNER JOIN t_grade g
 		on s.gid=g.id
 	</select>
+	
+	<delete id="deleteStudentById" parameterType="String">
+		delete from t_student where no=#{no}
+	</delete>
+
+	<insert id="addStudent" parameterType="student">
+		insert into t_student values(#{no},#{name},#{sex},#{birthday},#{cardNo},#{school},#{education},#{gid},1,#{email},#{qq},#{phone},#{introNo},#{createDate},NULL)
+	</insert>
 </mapper>

@@ -6,11 +6,37 @@
 	<mapper		namespace="com.qfedu.dao.CourseDao">
 	<resultMap id="coursedao" type="course">
 	<id column="id" property="id"></id>
+		<result column="cname" property="name"></result>
+		<result column="createdate" property="createDate"></result>
+		<result column="flag" property="flag"></result>
+		<result column="week" property="week"></result>
+		<result column="type" property="type"></result>
+	</resultMap>
+	<resultMap id="coursedao1" type="course">
+		<id column="id" property="id"></id>
 		<result column="name" property="name"></result>
 		<result column="createdate" property="createDate"></result>
 		<result column="flag" property="flag"></result>
 		<result column="week" property="week"></result>
 		<result column="type" property="type"></result>
 	</resultMap>
-	
+	<select id="findCourse" resultMap="coursedao1">
+		select * from t_course
+	</select>
+
+	<select id="findAll" resultMap="coursedao1">
+		select * from t_course
+	</select>
+
+	<update id="update" parameterType="course">
+		update t_course set name=#{name},week=#{week},type=#{type} where id=#{id}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from t_course where id=#{id}
+	</delete>
+
+	<insert id="add" parameterType="course">
+		insert into t_course values(null,#{name},#{flag},#{week},#{createDate},#{type})
+	</insert>
 </mapper>

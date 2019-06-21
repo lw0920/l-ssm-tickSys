@@ -6,9 +6,42 @@
 	<mapper	 namespace="com.qfedu.dao.DepartDao">
 	<resultMap id="departdao" type="depart">
 	<id column="id" property="id"></id>
-		<result column="name" property="name"></result>
+		<result column="dname" property="name"></result>
 		<result column="createtime" property="createTime"></result>
 		<result column="flag" property="flag"></result>
 	</resultMap>
+
+	<resultMap id="departdaovo" type="depart">
+	<id column="id" property="id"></id>
+		<result column="name" property="name"></result>
+		<result column="createtime" property="createTime"></result>
+		<result column="flag" property="flag"></result>
+		<result column="su" property="sum"></result>
+	</resultMap>
+
 	
+	<select id="findAllDepart" resultMap="departdaovo">
+		SELECT id,name,createtime,(
+		select count(*) from t_staff s
+		where s.did=d.id
+		)as su from t_depart d
+	</select>
+
+	<update id="updateDepart" parameterType="depart">
+
+		UPDATE t_depart SET name=#{name},createtime=#{createTime} where id=#{id}
+	</update>
+
+	<delete id="deleteDepart" parameterType="Integer">
+		delete from t_depart where id=#{id}
+	</delete>
+
+	<insert id="addDepart" parameterType="depart">
+		insert into t_depart(name,createtime,flag) VALUES (#{name},#{createTime},1)
+	</insert>
+
+	<select id="find" resultMap="departdaovo" >
+		select * from t_depart
+	</select>
+
 </mapper>

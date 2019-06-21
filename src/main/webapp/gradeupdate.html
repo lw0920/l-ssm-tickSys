@@ -37,7 +37,7 @@ function showData(obj) {
 	$("#f1").val(obj.id);
 	$("#f2").val(obj.name);
 	$("#f3").val(obj.cname);
-	$("#f4").val(obj.createdate);
+	$("#f4").val(obj.createDate);
 	$("#f5").val(obj.week);
 	$("#f6").val(obj.location);
 }
@@ -64,7 +64,7 @@ function showData(obj) {
 			<div class="layui-form-item">
 				<label class="layui-form-label">班级学科</label>
 				<div class="layui-input-block">
-					<input type="text" id="f3" lay-verify="name" autocomplete="off"
+					<input type="text" id="f3" lay-verify="name" name="cname" autocomplete="off"
 						readonly="readonly" class="layui-input">
 				</div>
 			</div>
@@ -91,16 +91,54 @@ function showData(obj) {
 			
 		
 			<div class="layui-form-item">
-				<input class="layui-btn"  style="margin-left: 10%"  type="submit" value="确认修改">
+				<button class="layui-btn" lay-submit="" lay-filter="demo1">确认修改</button>
 			</div>
 		</form>
 	</div>
-	
+	<script src="media/layui/layui.js"></script>
 	<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 	<script>
 		layui.use([ 'form', 'laydate' ],
 						function() {
 							var form = layui.form, layer = layui.layer, laydate = layui.laydate;
+
+		});
+	</script>
+	<script>
+		layui.use(['layer', 'form'], function(){
+			var layer = layui.layer
+					,form = layui.form;
+
+			//监听提交
+			form.on('submit(demo1)', function(data){
+				// JSON.stringify 将js对象转为json格式的字符串
+				// data.field 表单中提交的数据
+//                    layer.alert(JSON.stringify(data.field), {
+//                        title: '最终的提交信息'
+//                    })
+				$.ajax({
+					type:"post",
+					url:"gradeupdate.do",
+					data:data.field,
+					dataType:"json",
+					success:function(data){  //{code:1,info:....}
+						if(data.code == 1){
+							var t = parent.layui.table;
+							layer.msg("修改成功", {icon: 6});
+							window.location.href="gradelist.html";
+							var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+							parent.layer.close(index); //再执行关闭
+						}else{
+							alert(data.info);
+						}
+					}
+				})
+
+
+				// 阻止默认的提交
+				return false;
+			});
+
 
 		});
 	</script>

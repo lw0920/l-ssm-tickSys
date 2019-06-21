@@ -1,5 +1,8 @@
 package com.qfedu.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -8,6 +11,7 @@ import java.util.Date;
 public class Course {
     private Integer id;
     private String name;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createDate;
     private Integer flag;//1有效 2无效
     private Integer week;//以周为单位
@@ -28,7 +32,7 @@ public class Course {
     public void setName(String name) {
         this.name = name;
     }
-
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Date getCreateDate() {
         return createDate;
     }

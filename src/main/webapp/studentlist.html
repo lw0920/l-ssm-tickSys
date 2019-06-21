@@ -15,7 +15,7 @@
 		<table id="tbdata" lay-filter="tbop"></table>
 		<script type="text/html" id="barop">
 			<a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="detail">查看详情</a>
-    		<a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del">删除</a>
+    		<a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="del" >删除</a>
     		
 		</script>
 	</div>
@@ -41,7 +41,7 @@
 		      ,{field: 'education', title: '学历'}
 		      ,{field: 'birthday', title: '出生日期'}
 		      ,{field: 'createDate', title: '入学日期'}
-		      ,{field:'right', title: '操作',toolbar:"#barop"}
+		      ,{field:'right', title: '操作',toolbar:"#barop",width :180}
 		    ]]
 		  });
 		  //监听工具条
@@ -50,7 +50,7 @@
 		        if(obj.event === 'del'){
 		            layer.confirm('是否确认删除学员?', function(index){
 		                $.ajax({
-		                    url: "studentdelete.do",
+		                    url: "student/studentdelete.do",
 		                    type: "POST",
 		                    data:"no="+data.no,
 		                    success: function(data){

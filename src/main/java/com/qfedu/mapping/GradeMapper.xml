@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-	<mapper		namespace="com.qfedu.dao.GradeDao">
+	<mapper	 namespace="com.qfedu.dao.GradeDao">
 	<resultMap id="gradedao" type="grade">
 	<id column="id" property="id"></id>
 		<result column="gname" property="name"></result>
@@ -12,6 +12,39 @@
 		<result column="week" property="week"></result>
 		<result column="location" property="location"></result>
 		<result column="cid" property="cid"></result>
+		<association property="course" resultMap="com.qfedu.dao.CourseDao.coursedao"></association>
 	</resultMap>
-	
+	<resultMap id="gradedao1" type="grade">
+		<id column="id" property="id"></id>
+		<result column="name" property="name"></result>
+		<result column="createdate" property="createDate"></result>
+		<result column	="flag" property="flag"></result>
+		<result column="week" property="week"></result>
+		<result column="location" property="location"></result>
+		<result column="cid" property="cid"></result>
+		<association property="course" resultMap="com.qfedu.dao.CourseDao.coursedao"></association>
+	</resultMap>
+	<select id="findAll" resultMap="gradedao1">
+		select g.*,c.name as cname from t_grade g
+	INNER JOIN t_course c
+	on g.cid=c.id
+	</select>
+
+	<update id="update" parameterType="grade">
+		update t_grade set name=#{name},cid=#{cid},location=#{location} where id=#{id}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from t_grade where id=#{id}
+	</delete>
+
+	<select id="findGrade" resultMap="gradedao">
+		select g.id,g.name AS gname,c.name as cname from t_grade g
+		INNER JOIN t_course c
+		on g.cid=c.id
+	</select>
+
+	<insert id="add" parameterType="grade">
+		insert into t_grade values(null,#{name},#{flag},#{week},#{createDate},#{location},null)
+	</insert>
 </mapper>

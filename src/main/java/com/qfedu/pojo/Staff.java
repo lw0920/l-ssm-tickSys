@@ -1,5 +1,8 @@
 package com.qfedu.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -15,7 +18,10 @@ public class Staff {
     private String  qq;
     private String  phone;
     private String  photo;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createDate;
+    private String dname;
+    private Depart depart;
 
     public String getNo() {
         return no;
@@ -88,13 +94,25 @@ public class Staff {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Date getCreateDate() {
         return createDate;
     }
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public String getDname() {
+        return depart.getName();
+    }
+
+    public Depart getDepart() {
+        return depart;
+    }
+
+    public void setDepart(Depart depart) {
+        this.depart = depart;
     }
 
     @Override
@@ -110,6 +128,7 @@ public class Staff {
                 ", phone='" + phone + '\'' +
                 ", photo='" + photo + '\'' +
                 ", createDate=" + createDate +
+                ", depart=" + depart +
                 '}';
     }
 }

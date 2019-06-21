@@ -27,7 +27,7 @@
 		  //第一个实例
 		  table.render({
 		    elem: '#tbdata'
-		    ,url: 'staffpage.do' //数据接口
+		    ,url: '/staffpage.do' //数据接口
 		    ,page: true //开启分页
 		    ,cols: [[ //表头
 		      {field: 'no', title: '工号', sort: true, fixed: 'left'}
@@ -37,8 +37,8 @@
 		      ,{field: 'phone', title: '手机号'}
 		      ,{field: 'qq', title: 'qq号'}
 		      ,{field: 'email', title: '邮箱'}
-		      ,{field: 'createdate', title: '入职日期'}
-		      ,{field:'right', title: '操作',toolbar:"#barop"}
+		      ,{field: 'createDate', title: '入职日期'}
+		      ,{field:'right', title: '操作',toolbar:"#barop",width :180}
 		    ]]
 		  });
 		  //监听工具条

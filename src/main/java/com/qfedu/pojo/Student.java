@@ -1,5 +1,8 @@
 package com.qfedu.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -9,6 +12,7 @@ public class Student {
     private String no;
     private String name;
     private String sex;//男女
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     private String cardNo;
     private String school;
@@ -19,11 +23,11 @@ public class Student {
     private Integer gid;//班级id
     private String introNo;//介绍人工号或学号
     private Integer flag;//1在读2休学3毕业4开除5退学
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String createDate;//入学日期
     private String photo;//照片路径
-    private Grade grade;
     private String gname;
-
+    private Grade grade;
 
     public String getNo() {
         return no;
@@ -48,7 +52,7 @@ public class Student {
     public void setSex(String sex) {
         this.sex = sex;
     }
-
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public Date getBirthday() {
         return birthday;
     }
@@ -128,7 +132,7 @@ public class Student {
     public void setFlag(Integer flag) {
         this.flag = flag;
     }
-
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     public String getCreateDate() {
         return createDate;
     }
@@ -155,6 +159,7 @@ public class Student {
     public String getGname() {
         return grade.getName();
     }
+
 
     @Override
     public String toString() {

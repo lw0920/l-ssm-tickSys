@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="layui-container" style="margin-top: 5px">
-		<form class="layui-form" action="gradeadd.do" method="post">
+		<form class="layui-form" action="/gradeadd.do" method="post">
 			<div class="layui-form-item">
 				<label class="layui-form-label">班级名称</label>
 				<div class="layui-input-block">
@@ -31,7 +31,7 @@
 			<div class="layui-form-item">
 				<label class="layui-form-label">开班日期</label>
 				<div class="layui-input-block">
-				 <input type="text" name="createdate" id="date" autocomplete="off" class="layui-input">
+				 <input type="text" name="createDate" id="date" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-form-item">
@@ -48,13 +48,14 @@
 						placeholder="请输入地址" class="layui-input">
 				</div>
 			</div>
-		
-			
-			
+
+
+
 			<div class="layui-form-item">
-				<input class="layui-btn"  style="margin-left: 10%" type="submit" value="确认新增">
+				<button class="layui-btn" lay-submit="" lay-filter="demo1">确认添加</button>
 			</div>
 		</form>
+
 	</div>
 
 
@@ -71,7 +72,6 @@
 							});
 							initData();
 		});
-		
 		//初始化数据
 		function initData() {
 			$.get("courseall.do",null,function(arr){
@@ -81,7 +81,44 @@
 				form.render("select");
 			})
 		}
-		
+
+	</script>
+	<script>
+		layui.use(['layer', 'form'], function(){
+			var layer = layui.layer
+					,form = layui.form;
+
+			//监听提交
+			form.on('submit(demo1)', function(data){
+				// JSON.stringify 将js对象转为json格式的字符串
+				// data.field 表单中提交的数据
+//                    layer.alert(JSON.stringify(data.field), {
+//                        title: '最终的提交信息'
+//                    })
+				$.ajax({
+					type:"post",
+					url:"/gradeadd.do",
+					data:data.field,
+					dataType:"json",
+					success:function(data){  //{code:1,info:....}
+						if(data.code == 1){
+							var t = parent.layui.table;
+							window.location.href="gradelist.html";
+							var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+							parent.layer.close(index); //再执行关闭
+						}else{
+							alert(data.info);
+						}
+					}
+				})
+
+
+				// 阻止默认的提交
+				return false;
+			});
+
+
+		});
 	</script>
 </body>
 </html>

@@ -3,8 +3,11 @@ package com.qfedu.service.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.qfedu.dao.StudentDao;
+import com.qfedu.pojo.Grade;
+import com.qfedu.pojo.Staff;
 import com.qfedu.pojo.Student;
 import com.qfedu.service.StudentService;
+import org.apache.xmlbeans.impl.xb.xsdschema.All;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,4 +42,16 @@ public class StudentServiceImpl implements StudentService {
         return map;
 
     }
+
+    @Override
+    public void addStudent(Student student) {
+        studentDao.addStudent(student);
+    }
+
+    @Override
+    public void deleteStudentById(String no) {
+        studentDao.deleteStudentById(no);
+    }
+
+
 }

@@ -1,5 +1,7 @@
 package com.qfedu.dao;
 
+import com.qfedu.pojo.Grade;
+import com.qfedu.pojo.Staff;
 import com.qfedu.pojo.Student;
 
 import java.util.List;
@@ -9,4 +11,8 @@ import java.util.List;
  */
 public interface StudentDao {
    public List<Student> findAll();
+
+   public void addStudent(Student student);
+
+   public void deleteStudentById(String no);
 }

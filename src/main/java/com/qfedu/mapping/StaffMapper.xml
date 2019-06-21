@@ -15,6 +15,29 @@
 		<result column="email" property="email"></result>
 		<result column="phone" property="phone"></result>
 		<result column="photo" property="photo"></result>
+		<association property="depart" resultMap="com.qfedu.dao.DepartDao.departdao"></association>
 	</resultMap>
-	
+
+
+	<select id="findStaff" resultMap="staffdao">
+		select * from t_staff
+	</select>
+
+	<select id="findAll"  resultMap="staffdao">
+		select s.*,d.name as dname from t_staff s
+		INNER JOIN t_depart d
+		on s.did=d.id
+	</select>
+
+	<insert id="add" parameterType="staff">
+		insert into t_staff values(#{no},#{name},#{did},#{flag},#{sex},#{email},#{qq},#{phone},#{createDate},#{photo})
+	</insert>
+
+	<delete id="delete" parameterType="String">
+		delete from t_staff where no=#{no}
+	</delete>
+
+	<update id="update" parameterType="staff">
+		update t_staff set name=#{name},did=#{did},flag=#{flag},sex=#{sex},email=#{email},qq=#{qq},phone=#{phone},createDate=#{createDate},photo=#{photo} where no=#{no}
+	</update>
 </mapper>
