@@ -5,7 +5,6 @@ import com.qfedu.service.CourseService;
 import com.qfedu.vo.JsonBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -31,7 +30,7 @@ public class CourseController {
 
     @RequestMapping("/coursepage.do")
     @ResponseBody
-    public Map findAll(Integer page, Integer limit){
+    public Map<String,Object> findAll(Integer page, Integer limit){
         Map<String,Object> map=courseService.findAllByPage(page,limit);
         System.out.println(map.size());
         System.out.println(map.get("list"));

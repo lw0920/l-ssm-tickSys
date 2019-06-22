@@ -73,7 +73,7 @@ public class AuthorityController {
 
         return new JsonBean(1000,null);
     }
-    @RequestMapping("/coursedelete.do")
+   /* @RequestMapping("/coursedelete.do")
     @ResponseBody
     public JsonBean deleteById(Integer id){
         authorityService.deleteById(id);
@@ -81,7 +81,7 @@ public class AuthorityController {
         //return list;
 
         return new JsonBean(1000,null);
-    }
+    }*/
 
 
 }

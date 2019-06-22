@@ -48,10 +48,10 @@
 			</div>
 
 			<div class="layui-form-item">
-				<label class="layui-form-label">审批领导</label>
+				<label class="layui-form-label">所属部门</label>
 				<div class="layui-input-block">
-					<select name="rname"  id="cds">
-						<option value="-1">--请选择领导--</option>
+					<select name="did"  id="cds">
+						<option value="-1">--请选择部门--</option>
 						<option value="张三">张三</option>
 					</select>
 				</div>
@@ -99,6 +99,7 @@
 		//初始化数据
 		function initData() {
 			$.get("departall.do",null,function(arr){
+				$("#cds").empty();
 				for(i=0;i<arr.length;i++){
 					$("#cds").append("<option value='"+arr[i].id+"'>"+arr[i].name+"</option>");
 				}

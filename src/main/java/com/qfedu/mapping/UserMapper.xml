@@ -59,7 +59,6 @@
 		where u.id  in
 		(
 		SELECT temp.id from (
-
 		SELECT DISTINCT u.id from t_user u
 		inner JOIN t_userrole ur
 		on u.id=ur.uid

@@ -15,7 +15,7 @@
 		<result column="email" property="email"></result>
 		<result column="phone" property="phone"></result>
 		<result column="photo" property="photo"></result>
-		<association property="depart" resultMap="com.qfedu.dao.DepartDao.departdao"></association>
+		<association property="depart" resultMap="com.qfedu.dao.DepartDao.departdao1"></association>
 	</resultMap>
 
 

@@ -2,15 +2,11 @@ package com.qfedu.controller;
 
 import com.qfedu.pojo.Staff;
 import com.qfedu.service.StaffService;
-import com.qfedu.utils.UploadUtils;
 import com.qfedu.vo.JsonBean;
-import com.qiniu.storage.UploadManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Map;
@@ -56,15 +52,15 @@ public class StaffController {
         return new JsonBean(1000,null);
     }
 
-    @RequestMapping("/photoupload.do")
+    /*@RequestMapping("/photoupload.do")
     @ResponseBody
-    public JsonBean uoload(MultipartFile multipartFile){
+    public JsonBean uoload(@RequestParam("file") MultipartFile multipartFile){
         UploadUtils utils = new UploadUtils();
         String path = utils.getPath();
         String upload = utils.upload(multipartFile);
         String msg = path+"/"+upload;
         return new JsonBean(1000,msg);
-    }
+    }*/
     @RequestMapping("/staffupdate.do")
     @ResponseBody
     public JsonBean updateStaff(Staff staff){

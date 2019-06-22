@@ -19,6 +19,12 @@
 		<result column="su" property="sum"></result>
 	</resultMap>
 
+	<resultMap id="departdao1" type="depart">
+		<id column="id" property="id"></id>
+		<result column="dname" property="name"></result>
+		<result column="createtime" property="createTime"></result>
+		<result column="flag" property="flag"></result>
+	</resultMap>
 
 	<select id="findAllDepart" resultMap="departdaovo">
 		SELECT id,name,createtime,(

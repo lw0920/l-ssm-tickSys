@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+	<mapper namespace="com.qfedu.dao.CheckDao">
+	<resultMap id="checkdao" type="check">
+		<id column="id" property="id"></id>
+		<result column="info" property="info"></result>
+		<result column="type" property="type"></result>
+		<result column="startname" property="startName"></result>
+		<result column="startno" property="startNo"></result>
+		<result column="startdate" property="startDate"></result>
+		<result column="enddate" property="endDate"></result>
+		<result column="days" property="days"></result>
+		<result column="pid" property="pid"></result>
+		<result column="flag" property="flag"></result>
+		<association property="user" resultMap="com.qfedu.dao.UserDao.userdao">
+
+		</association>
+	</resultMap>
+
+	<insert id="insertCheck" parameterType="check">
+		insert into t_check(info,type,startname,startno,startdate,enddate,days,pid)
+		values(#{info},#{type},#{startname},#{startno},#{startdate},#{enddate},#{days},#{pid})
+	</insert>
+
+	<select id="findAllCheck" resultMap="checkdao">
+		select * from t_check c
+		INNER join t_user u
+		on c.startno = u.no
+	</select>
+
+
+</mapper>

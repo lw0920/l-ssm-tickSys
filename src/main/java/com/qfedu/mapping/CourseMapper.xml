@@ -32,7 +32,7 @@
 		update t_course set name=#{name},week=#{week},type=#{type} where id=#{id}
 	</update>
 
-	<delete id="delete" parameterType="int">
+	<delete id="delete" parameterType="Integer">
 		delete from t_course where id=#{id}
 	</delete>
 

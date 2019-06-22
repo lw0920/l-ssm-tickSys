@@ -1,14 +1,4 @@
 package com.qfedu.controller;
-import java.util.List;
-import java.util.Map;
-import com.qfedu.pojo.Depart;
-import com.qfedu.service.DepartService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 import com.qfedu.pojo.Depart;
 import com.qfedu.service.DepartService;
@@ -20,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,19 +19,19 @@ import java.util.Map;
 @Controller
 @ResponseBody
 public class DepartController {
+
+
     @Autowired(required = false)
     private DepartService departService;
 
     @RequestMapping("/departall.do")
-    @ResponseBody
     public List<Depart> find(){
         List<Depart> departs = departService.find();
         System.out.println(departs.size());
         return departs;
     }
 
-    @Autowired(required = false)
-    private DepartService departService;
+
 
 
     @RequestMapping("/departpage.do")
@@ -72,9 +63,20 @@ public class DepartController {
     @RequestMapping("/departadd.do")
     public JsonBean addDepart(Depart depart, @DateTimeFormat(pattern = "yyyy-MM-dd")Date createtime){
 
-        System.out.println(createtime+"11111111111111111111111111111111111111111111111111111111");
         depart.setCreateTime(createtime);
         departService.addDepart(depart);
         return  new JsonBean(1000,null);
     }
+
+
+    /*@RequestMapping("/departall.do")
+
+    public List findAllDepart(){
+
+        List list = departService.findAllDepart();
+
+
+        return list;
+    }*/
+
 }
