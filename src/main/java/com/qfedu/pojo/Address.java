@@ -13,6 +13,7 @@ public class Address {
     private Integer  flag;
     private String  postCode;
     private String  no;
+    private  Integer naem;
 
     public String getPostCode() {
         return postCode;
