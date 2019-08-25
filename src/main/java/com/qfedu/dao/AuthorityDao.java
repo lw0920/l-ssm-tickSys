@@ -24,5 +24,6 @@ public interface AuthorityDao {
     void deleteRoleAuthorityByAuthorityId(Integer id);
 
     void deleteById(Integer id);
+    //第二次修改提交
 
 }
