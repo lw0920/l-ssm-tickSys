@@ -15,6 +15,8 @@ public class Address {
     private String  no;
     private  Integer naem;
 
+    private String nam222;
+
     public String getPostCode() {
         return postCode;
     }
